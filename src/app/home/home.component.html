@@ -1,0 +1,6 @@
+<mat-grid-list cols="4" rowHeight="1:2">
+  <mat-grid-tile *ngFor="let book of booksCatalog" uiSref="book" [uiParams]="{bookId: book.id}">
+    <img [src]="book.coverUrl" (error)="errImg($event)" height="60%" alt="book.title">
+    <mat-grid-tile-header>{{book.title}}</mat-grid-tile-header>
+  </mat-grid-tile>
+</mat-grid-list>

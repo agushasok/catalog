@@ -1,0 +1,15 @@
+<mat-list>
+  <mat-list-item>authors:</mat-list-item><p> {{book.options.authors}}</p>
+  <mat-list-item>Description: </mat-list-item><p>{{book.description.default}}</p>
+</mat-list>
+<h3>Bundles</h3>
+<mat-list>
+  <mat-list-item *ngFor="let bundle of bundles">
+    <a [href]="'https://storage.aggregion.com/api/files/' + bundle.resourceId + '/shared/data'">
+      https://storage.aggregion.com/api/files/{{bundle.resourceId}}/shared/data
+    </a>
+  </mat-list-item>
+</mat-list>
+<button mat-flat-button uiSref="catalog">
+  Back
+</button>
