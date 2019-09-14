@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {HttpClientModule} from '@angular/common/http';
 import {BookComponent} from './book/book.component';
 import {HomeService} from './home.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const rootModule: RootModule = {
@@ -27,7 +28,7 @@ const rootModule: RootModule = {
     },
       {
         name: 'book',
-        url: '/:bookId',
+        url: '/books/:bookId',
         component: BookComponent,
         resolve: [
           {
@@ -40,16 +41,22 @@ const rootModule: RootModule = {
             deps: [Transition, HomeService],
             resolveFn: (trans: Transition, homeService: HomeService) => homeService.getBundles(trans.params().bookId).toPromise(),
           }]
+      },
+      {
+        name: 'notFound',
+        url: '/err',
+        component: NotFoundComponent
       }],
   useHash: false,
-  otherwise: 'catalog'
+  otherwise: '/err'
 };
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BookComponent
+    BookComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

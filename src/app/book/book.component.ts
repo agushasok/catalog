@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StateService } from '@uirouter/angular';
 
 @Component({
   selector: 'app-book',
@@ -10,10 +11,9 @@ export class BookComponent implements OnInit {
   @Input() book;
   @Input() bundles;
 
-  constructor() { }
+  constructor(private state: StateService) { }
 
   ngOnInit() {
-    console.log(this.bundles);
   }
 
 }
